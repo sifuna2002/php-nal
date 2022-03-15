@@ -1,0 +1,86 @@
+@font-face {
+    font-family: 'itromatic';
+    src: url('../fonts/ltromatic.ttf') format('truetype'); 
+  }
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.row{
+    width: 100%;
+}
+html::-webkit-scrollbar {
+    display: none;
+}
+
+.nav{
+    width: 100%;
+    z-index: 4;
+    min-height: 70px;
+    background-color: rgba(95, 155, 150, 0.6);
+    box-shadow: 2px 2px 2px black;
+}
+.nav>a{
+    text-decoration: none;
+    color: black;
+}
+.nav>a:hover{
+    color: rgb(113, 52, 126);
+}
+.first{
+    margin-left: auto;
+}
+.top{
+    min-height: 90vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: right;
+    padding-top: 20vh;
+}
+.ban-img{
+    height: 300px;
+}
+.footer{
+    background-color: grey;
+    color:white;
+    margin-top: 5vh;
+}
+.vote-btn{
+    padding: 5%;
+    border-radius: 15px;
+}
+
+@media only screen and (max-width:700px){
+    .nav{
+        display: block;
+    }
+    .ban-img{
+        height: 200px;
+        padding-top: 10vh;
+    }
+}
+.threeD {
+    color: darkgrey;
+    white-space: nowrap;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4em;
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+    transition: 0.3s;
+    text-shadow: 1px 1px 0 grey, 1px 2px 0 grey, 1px 3px 0 grey, 1px 4px 0 grey,
+      1px 5px 0 grey, 1px 6px 0 grey, 1px 7px 0 grey, 1px 8px 0 grey,
+      5px 13px 15px black;
+  }
+  
+  .threeD:hover {
+    transition: 0.3s;
+    transform: scale(1.1)translate(-50%, -50%);
+    text-shadow: 1px -1px 0 grey, 1px -2px 0 grey, 1px -3px 0 grey,
+      1px -4px 0 grey, 1px -5px 0 grey, 1px -6px 0 grey, 1px -7px 0 grey,
+      1px -8px 0 grey, 5px -13px 15px black, 5px -13px 25px #808080;
+  }
