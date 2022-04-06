@@ -230,7 +230,7 @@ if (isset($_POST['vote'])){
 				 
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <div class="single-new-trend mg-t-30">
-                            <a href="#"><img src="img/img/1.webp alt=""></a>
+                            <a href="#"><img src="img/2.webp" alt=""></a>
                             <div class="overlay-content">
 							<br />
                                 <a href="#">
@@ -313,7 +313,7 @@ if (isset($_POST['vote'])){
 				 
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <div class="single-new-trend mg-t-30">
-                            <a href="#"><img src="img/img/1.webp" alt=""></a>
+                            <a href="#"><img src="img/3.jpg" alt=""></a>
                             <div class="overlay-content">
 							<br />
                                 <a href="#">
@@ -376,14 +376,14 @@ if (isset($_POST['vote'])){
 					//$dbconnect = mysqli_connect('localhost', 'admin', 'pass1234', 'voting');
 					//retrieve the data from the database
 					// step 1 - write down the sql statement
-					$sql = "SELECT * FROM candidates WHERE position_id =  4 AND election_id = 1";
+					$sql = "SELECT * FROM candidates WHERE position_id = 4 AND election_id = 1";
 					// step 2-execute the sql statement using the mysqli_query function_exists
 					$result = mysqli_query($conn, $sql);
 					//step 3 - fetch the results
 					$presidents = mysqli_fetch_all($result, MYSQLI_ASSOC);
 					
 					foreach($presidents as $pres){
-						$user_id = $pres['user_id'];
+						$user_id = $pres['users_id'];
 						$candidate_id = $pres['id'];
 						$user_sql ="SELECT * FROM User WHERE id = $user_id"; 
 						$user_results = mysqli_query($conn, $user_sql);
@@ -396,7 +396,7 @@ if (isset($_POST['vote'])){
 				 
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <div class="single-new-trend mg-t-30">
-                            <a href="#"><img src="img/img/1.webp" alt=""></a>
+                            <a href="#"><img src="img/4.png" alt=""></a>
                             <div class="overlay-content">
 							<br />
                                 <a href="#">
@@ -458,7 +458,7 @@ if (isset($_POST['vote'])){
 					//$dbconnect = mysqli_connect('localhost', 'admin', 'pass1234', 'voting');
 					//retrieve the data from the database
 					// step 1 - write down the sql statement
-					$sql = "SELECT * FROM candidates WHERE position_id =  5 AND election_id = 1";
+					$sql = "SELECT * FROM candidates WHERE position_id =  6 AND election_id = 1";
 					// step 2-execute the sql statement using the mysqli_query function_exists
 					$result = mysqli_query($conn, $sql);
 					//step 3 - fetch the results
@@ -478,7 +478,7 @@ if (isset($_POST['vote'])){
 				 
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <div class="single-new-trend mg-t-30">
-                            <a href="#"><img src="img/img/1.webp" alt=""></a>
+                            <a href="#"><img src="img/5.webp" alt=""></a>
                             <div class="overlay-content">
 							<br />
                                 <a href="#">
@@ -517,8 +517,8 @@ if (isset($_POST['vote'])){
 												<i class="icon nalika-new-file"></i>
 											</div>
 											<div class="breadcomb-ctn">
-												<h2>Welfare</h2>
-												<p>Vote For Your Preferred Welfare Candidate </p>
+												<h2>Security</h2>
+												<p>Vote For Your Preferred Security Candidate </p>
 											</div>
 										</div>
                                     </div>
@@ -540,7 +540,7 @@ if (isset($_POST['vote'])){
 					//$dbconnect = mysqli_connect('localhost', 'admin', 'pass1234', 'voting');
 					//retrieve the data from the database
 					// step 1 - write down the sql statement
-					$sql = "SELECT * FROM candidates WHERE position_id =  6 AND election_id = 1";
+					$sql = "SELECT * FROM candidates WHERE position_id =  5 AND election_id = 1";
 					// step 2-execute the sql statement using the mysqli_query function_exists
 					$result = mysqli_query($conn, $sql);
 					//step 3 - fetch the results
@@ -560,7 +560,7 @@ if (isset($_POST['vote'])){
 				 
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <div class="single-new-trend mg-t-30">
-                            <a href="#"><img src="img/img/1.webp" alt=""></a>
+                            <a href="#"><img src="img/6.jpg" alt=""></a>
                             <div class="overlay-content">
 							<br />
                                 <a href="#">
