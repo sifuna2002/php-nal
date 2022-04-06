@@ -10,6 +10,7 @@
   $password = $_POST['user_password'];
   $user_email = $_POST['user_email'];
   $user_name = $_POST['user_name'];
+  $other_name = $_POST['other_name'];
   
   $check_rec = "SELECT id FROM User where user_email=\"".$user_email."\"";
   $user_results = $conn->query($check_rec);
@@ -19,7 +20,7 @@
     else{
       $error = false;
       $encr_pass = crypt($password,"ioahc7t(68809q8r%6xq)");
-      $save_rec = "INSERT INTO User(first_name,user_email,user_password) VALUES (\"".$user_name."\",\"".$user_email."\",\"".$encr_pass."\") ";
+      $save_rec = "INSERT INTO User(first_name,other_name,user_email,user_password) VALUES (\"".$user_name."\",\"".$other_name."\",\"".$user_email."\",\"".$encr_pass."\") ";
   
       if($conn->query($save_rec) === TRUE){
         $result = $conn->query($check_rec);
@@ -67,9 +68,13 @@ background-repeat:no-repeat;
 background-size:cover;">
     <center>
     <div style="padding-top:10vh;
-    background-color:aliceblue;
+    background: #4568DC;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #B06AB3, #4568DC);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #B06AB3, #4568DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     width: 600px;
     margin-top:40px;
+    border-radius:15px;
     ">
         <p id="db_connnection"></p>
         <center>
@@ -77,10 +82,13 @@ background-size:cover;">
             <hr style="margin-left:20%;margin-right:20%;">
 
         </center>
-        <form method="post" style="padding-left:20%;padding-right:20%;">
-            <label for="user_name">Your Name</label>
+        <form method="post" style="padding-left:20%;padding-right:20%; ">
+            <label for="user_name">First Name</label>
             <input type="text" name="user_name" id="user_name" class="form-control" required placeholder="Mendel"
                 maxlength="20"><br>
+                <label for="user_name">Other Name</label>
+            <input type="text" name="other_name" id="other_name" class="form-control" required placeholder="Mendel"
+            <br><br>
             <label for="Email">Email</label><br>
             <input type="email" name="user_email" id="user_email" class="form-control" required placeholder="Email"><br>
             <label for="password">password</label><br>

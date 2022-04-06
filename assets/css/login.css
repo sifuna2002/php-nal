@@ -6,6 +6,7 @@ margin: 0;
 box-sizing: border-box;
 }
 body{
+  height: 100vh;
 background-color: #080710;
 background:url(login.jpg);
 background-repeat:no-repeat;
@@ -45,8 +46,10 @@ bottom: -80px;
 form{
 height: 500px;
 width: 400px;
-background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+background: #56CCF2;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 position: absolute;
 transform: translate(-50%,-50%);
 top: 50%;

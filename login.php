@@ -5,6 +5,7 @@ session_start();
 $error = false;
 if(isset($_SESSION["username"])){
     $c = $_SESSION["username"];
+    
     $_COOKIE["user_name"] = $c;
     setcookie("user_cookie","$c",time() + 10,'/');
     header("Location: nalika/index.php");
@@ -23,19 +24,21 @@ function clearSession(){
         $error = true;
     }else{
         $c_p = crypt($pass,"ioahc7t(68809q8r%6xq)");
-        echo $c_p;
+       // echo $c_p;
         $get_password = "SELECT * FROM User WHERE user_email=\"".$user_email."\"";
-        echo $get_password;
+        //echo $get_password;
         $user_results = $conn->query($get_password);
         if($user_results->num_rows > 0){
             $error = false;
             while($row = $user_results->fetch_assoc()){
                 $name_z =  $row["first_name"];
-                echo $name_z;
+               // echo $name_z;
                 $pass_z =  $row["user_password"];
+                $id_z=$row["id"];
 
                 if($pass_z === $c_p){
                     $_SESSION["username"] = $name_z;
+                    $_SESSION['id']=$id_z;
                     setcookie("user_cookie","$name_z",time() + 20,'/');
                     header("Location: nalika/index.php");
                     
@@ -94,8 +97,7 @@ function clearSession(){
         
     ?>
         <div class="background">
-            <div class="shape"></div>
-            <div class="shape"></div>
+            
         </div>
         <form method="post">
             <h3>Login</h3>
@@ -111,7 +113,7 @@ function clearSession(){
             </center>
             <?php
         if($error){
-            echo "<center><p style\"color:red\"> Check on credentials </p></center>";
+            echo "<center><p style='color:red;'> Check on your credentials and try again! </p></center>";
         }
         ?>
 

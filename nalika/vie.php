@@ -14,6 +14,52 @@ else{
     header("Location: ../login.php");
 }
 
+if (isset($_POST['vie'])){
+    //create vars
+    $election_id = $position_id = 0;
+    $error_position = $error_election = '';
+
+    //pick from  position
+    $election_id=$_POST['election'];
+    $position_id=$_POST['position'];
+    
+
+    //$election_id = sanitize($election_id);
+    //$position_id = sanitize($position_id);
+    // if(!is_int($election_id)){
+    //     $error_election="An expected error occurred";
+    //     //exit;
+    // }
+
+    // if(!is_int($position_id)){
+        
+    //     exit;
+    // }
+
+   $user_id = $_SESSION['id'];
+   ///check if registered user
+   $sql="SELECT * FROM candidates WHERE users_id = $user_id AND election_id = $election_id";
+//    $result=mysqli_query($conn, $sql);
+//    $row=mysqli_num_rows($result);
+//    $success=$row;
+   $user_results = $conn->query($sql);
+   if($user_results->num_rows > 0){
+    $error="<p style='color:red'>Sorry, you are already registered to a post !</p>";
+   }else{
+    $sql="INSERT INTO candidates (users_id, position_id, election_id) VALUES ($user_id, $position_id,$election_id)";
+    if($conn->query($sql) === TRUE){
+        $success="<p style='color:green'>Success, You have registered successfully </p>";
+    }else{
+        $error="<p style='color:red'>Error: " . $conn->error . "</p>";
+    }
+   }
+
+//    if($row>0){
+//        $error="you are already registered to a post";
+//    }
+
+   
+}
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -121,14 +167,8 @@ else{
                                     class="mini-click-non">Vote</span></a>
                             
                         </li>
-                        <li>
-                            <a class="has-arrow" href="results.php" aria-expanded="false"><i
-                                    class="icon nalika-mail icon-wrap"></i> <span
-                                    class="mini-click-non">Results</span></a>
-                            
-                        </li>
                         
-                       
+                    
                     </ul>
                 </nav>
             </div>
@@ -479,8 +519,8 @@ else{
                                                 <i class="icon nalika-home"></i>
                                             </div>
                                             <div class="breadcomb-ctn">
-                                                <h2>Dashboard One</h2>
-                                                <p>Welcome <?php echo $c ?><span class="bread-ntd">Admin Template</span></p>
+                                                <h2>Register to vote</h2>
+                                                <p>Welcome <?php echo $c ?><span class="bread-ntd"></span></p>
                                             </div>
                                         </div>
                                     </div>
@@ -496,10 +536,95 @@ else{
                     </div>
                 </div>
             </div>
+            <div class="breadcome-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="breadcome-list">
+                                <div class="row">
+                                    <center>
+                                <div class="panel-body" style="display:flex; align-items:center; justify-content:center;width:400px; height:300px;background-color:#1b2a20;
+                                border-radius: 20px;
+                                ">
+                                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="vie" style="color:purple;">
+                                        <div class="form-group">
+                                            <label for="election" class="control-label" >Election</label>
+
+                                            <select style="
+                                                border:1px solid blue;
+                                                -webkit-border-top-right-radius: 15px;
+                                                -webkit-border-bottom-right-radius: 15px;
+                                                -moz-border-radius-topright: 15px;
+                                                -moz-border-radius-bottomright: 15px;
+                                                border-top-right-radius: 15px;
+                                                border-bottom-right-radius: 15px;
+                                                color:black;
+                                                padding:2px;" name="election" id="election">
+                                                <?php 
+                                                   // $dbconnect = mysqli_connect('localhost','root','','db');
+                                                    $sql = "SELECT * FROM election WHERE active=1";
+                                                    $result=mysqli_query($conn, $sql);
+                                                    $election=mysqli_fetch_all($result, MYSQLI_ASSOC);
+                                                    
+                                                    foreach($election as $elect) { ?> 
+                                                        <option value="<?php echo $elect['id'];?>"><?php echo $elect['name'];?></option>;
+                                                    <?php 
+                                                    }
+                                                    ?>
+                
+                                            </select>
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                        <label for="position" class="control-label">Position</label>
+                                            <select name="position" id="position"style="
+                                                border:1px solid blue;
+                                                -webkit-border-top-right-radius: 15px;
+                                                -webkit-border-bottom-right-radius: 15px;
+                                                -moz-border-radius-topright: 15px;
+                                                -moz-border-radius-bottomright: 15px;
+                                                border-top-right-radius: 15px;
+                                                border-bottom-right-radius: 15px;
+                                                padding:2px;
+                                                color:black;
+                                            ">
+                                            <?php 
+                                                   // $dbconnect = mysqli_connect('localhost','root','','db');
+                                                    $sql = "SELECT * FROM position ";
+                                                    $result=mysqli_query($conn, $sql);
+                                                    $position=mysqli_fetch_all($result, MYSQLI_ASSOC);
+                                                    
+                                                    foreach($position as $post) { ?> 
+                                                        <option value="<?php echo $post['id'];?>"><?php echo $post['name'];?></option>;
+                                                    <?php 
+                                                    }
+                                                    ?>>
+                                            </select>
+                                            
+                                        </div>
+                                        <?php
+                                            if (isset($success)):
+                                                echo $success;
+                                            endif;
+                                            if (isset($error)):
+                                                echo $error;
+                                            endif;
+                                        ?>
+                                        <input id="vie" type="submit" name="vie" value="Register" class="btn btn-success btn-block loginbtn"/>
+                                        
+                                    </form>
+                    </div>
+                    </center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
     
-        <div class="footer-copyright-area" style="position:absolute;bottom:0;left:0;right:0;">
+        <div class="footer-copyright-area" >
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
